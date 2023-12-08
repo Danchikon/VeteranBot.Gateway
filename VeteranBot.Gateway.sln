@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3109CB4C-9C54-4596-9544-7DC36673B4B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeteranBot.Gateway.Api", "src\VeteranBot.Gateway.Api\VeteranBot.Gateway.Api.csproj", "{014B2E7C-51F3-4838-9187-B63E0A581426}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeteranBot.Gateway.Domain", "src\VeteranBot.Gateway.Domain\VeteranBot.Gateway.Domain.csproj", "{AF7BD30B-E304-4ABA-AF98-53D76C1E4C61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeteranBot.Gateway.Application", "src\VeteranBot.Gateway.Application\VeteranBot.Gateway.Application.csproj", "{BCBC4711-B718-4684-A77F-7089260C9EA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeteranBot.Gateway.Infrastructure", "src\VeteranBot.Gateway.Infrastructure\VeteranBot.Gateway.Infrastructure.csproj", "{011919A5-3837-450A-A211-F4896C029B2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{BE683802-1426-4704-9F9A-F57257D9CDB1}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		Dockerfile = Dockerfile
+		global.json = global.json
+		veteran-bot-407514-0c3050495775.json = veteran-bot-407514-0c3050495775.json
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{014B2E7C-51F3-4838-9187-B63E0A581426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014B2E7C-51F3-4838-9187-B63E0A581426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014B2E7C-51F3-4838-9187-B63E0A581426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014B2E7C-51F3-4838-9187-B63E0A581426}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF7BD30B-E304-4ABA-AF98-53D76C1E4C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF7BD30B-E304-4ABA-AF98-53D76C1E4C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF7BD30B-E304-4ABA-AF98-53D76C1E4C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF7BD30B-E304-4ABA-AF98-53D76C1E4C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBC4711-B718-4684-A77F-7089260C9EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBC4711-B718-4684-A77F-7089260C9EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBC4711-B718-4684-A77F-7089260C9EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBC4711-B718-4684-A77F-7089260C9EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011919A5-3837-450A-A211-F4896C029B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011919A5-3837-450A-A211-F4896C029B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011919A5-3837-450A-A211-F4896C029B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011919A5-3837-450A-A211-F4896C029B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{014B2E7C-51F3-4838-9187-B63E0A581426} = {3109CB4C-9C54-4596-9544-7DC36673B4B3}
+		{AF7BD30B-E304-4ABA-AF98-53D76C1E4C61} = {3109CB4C-9C54-4596-9544-7DC36673B4B3}
+		{BCBC4711-B718-4684-A77F-7089260C9EA3} = {3109CB4C-9C54-4596-9544-7DC36673B4B3}
+		{011919A5-3837-450A-A211-F4896C029B2C} = {3109CB4C-9C54-4596-9544-7DC36673B4B3}
+	EndGlobalSection
+EndGlobal

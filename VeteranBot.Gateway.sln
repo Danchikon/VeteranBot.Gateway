@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{
 		global.json = global.json
 		veteran-bot-407514-0c3050495775.json = veteran-bot-407514-0c3050495775.json
 		.gitignore = .gitignore
+		.github\workflows\docker-image.yml = .github\workflows\docker-image.yml
 	EndProjectSection
 EndProject
 Global

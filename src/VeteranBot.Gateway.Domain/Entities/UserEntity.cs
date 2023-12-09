@@ -6,8 +6,9 @@ public class UserEntity
 {
     public required string PhoneNumber { get; init; }
     public required string FullName { get; set; }
-    public required ushort Age { get; set; }
-    public required bool IsVeteran { get; set; }
-    public ICollection<BotType> BotTypes { get; set; } = Array.Empty<BotType>(); 
+    public required int Age { get; set; }
+    public required string Region { get; set; }
+    public required UserType Type { get; set; }
     public DateTime RegistrationDate { get; init; }
+    public ICollection<string> BotTypes { get; set; } = Array.Empty<string>(); 
 }

@@ -1,95 +1,67 @@
+using MongoDB.Driver;
+using VeteranBot.Gateway.Domain.Entities;
+
 namespace VeteranBot.Gateway.Api.GraphQl;
 
 public class Query 
 {
-    // public async Task<ICollection<Point>> GetShortestPathAsync(
-    //     GetShortestPathQuery query, 
-    //     [FromServices] IMediator mediator, 
-    //     CancellationToken cancellationToken
-    //     )
-    // {
-    //     return await mediator.Send(query, cancellationToken);
-    // }
-    //
-    // [UseOffsetPaging]
-    // [UseProjection]
-    // [UseFiltering]
-    // public IQueryable<FavoriteDto> GetPagedFavorites([FromServices] IFavoriteMapper favoriteMapper, TDbContext dbContext)
-    // {
-    //     return dbContext.Set<FavoriteEntity>().Select(favoriteMapper.ProjectToDto);
-    // }
-    //
-    // [UsePaging(MaxPageSize = 10000)]
-    // [UseProjection]
-    // [UseFiltering]
-    // public IQueryable<NodeDto> GetPagedNodes([FromServices] INodeMapper nodeMapper, TDbContext dbContext)
-    // {
-    //     return dbContext.Set<NodeEntity>().Select(nodeMapper.ProjectToDto);
-    // }
-    //
-    // public async Task<NodeDto> GetNodeByIdAsync(
-    //     long id, 
-    //     [FromServices] IGcpAirQualityRefitApi gcpAirQualityRefitApi,
-    //     [FromServices] IOptions<GcpOptions> gcpOptions,
-    //     [FromServices] INodeMapper nodeMapper,
-    //     TDbContext dbContext,
-    //     CancellationToken cancellationToken
-    // )
-    // {
-    //     var nodeDto = await dbContext.Set<NodeEntity>().Select(nodeMapper.ProjectToDto).SingleAsync(node => node.Id == id, cancellationToken: cancellationToken);
-    //
-    //     var getAirQualityRequest = new GetGcpAirQualityRequestDto
-    //     {
-    //         Location = new GcpAirQualityLocationDto
-    //         {
-    //             Latitude = Convert.ToDecimal(nodeDto.Location.Y),
-    //             Longitude = Convert.ToDecimal(nodeDto.Location.X)
-    //         }
-    //     };
-    //
-    //     var getAirQualityResponse = await gcpAirQualityRefitApi.GetAsync(
-    //         gcpOptions.Value.AccessKey,
-    //         getAirQualityRequest,
-    //         cancellationToken
-    //     );
-    //     
-    //     return nodeDto with
-    //     {
-    //         AirQualityCategory = getAirQualityResponse.Content?.Indexes.FirstOrDefault()?.Category
-    //     };
-    // }
-    //
-    // [UsePaging(MaxPageSize = 10000)]
-    // [UseProjection]
-    // [UseFiltering]
-    // public IQueryable<WayDto> GetPagedWays([FromServices] IWayMapper nodeMapper, TDbContext dbContext)
-    // {
-    //     return dbContext.Set<WayEntity>().Select(nodeMapper.ProjectToDto);
-    // }
-    //
-    // [UseFirstOrDefault]
-    // [UseProjection]
-    // [UseFiltering]
-    // public IQueryable<WayDto> GetFirstOrDefaultWay([FromServices] IWayMapper wayMapper, TDbContext dbContext)
-    // {
-    //     return dbContext.Set<WayEntity>().Select(wayMapper.ProjectToDto);
-    // }
-    //
-    // [UseOffsetPaging]
-    // [UseProjection]
-    // [UseFiltering]
-    // [UseSorting]
-    // public IQueryable<UserDto> GetPagedUsers([FromServices] IUserMapper userMapper, TDbContext dbContext)
-    // {
-    //     return dbContext.Set<UserEntity>().Select(userMapper.ProjectToDto);
-    // }
-    //
-    // [UseFirstOrDefault]
-    // [UseProjection]
-    // [UseFiltering]
-    // [UseSorting]
-    // public IQueryable<UserDto> GetFirstOrDefaultUser([FromServices] IUserMapper userMapper, TDbContext dbContext)
-    // {
-    //     return dbContext.Set<UserEntity>().Select(userMapper.ProjectToDto);
-    // }
+    [UseOffsetPaging]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IExecutable<UserEntity> GetPagedUsers([Service] IMongoCollection<UserEntity> usersCollection)
+    {
+        return usersCollection.AsExecutable();
+    }
+    
+    [UseOffsetPaging]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IExecutable<ScheduledMessageEntity> GetPagedScheduledMessages([Service] IMongoCollection<ScheduledMessageEntity> scheduledMessagesCollection)
+    {
+        return scheduledMessagesCollection.AsExecutable();
+    }
+    
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IExecutable<ScheduledMessageEntity> GetScheduledMessages([Service] IMongoCollection<ScheduledMessageEntity> scheduledMessagesCollection)
+    {
+        return scheduledMessagesCollection.AsExecutable();
+    }
+    
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IExecutable<UserEntity> GetUsers([Service] IMongoCollection<UserEntity> usersCollection)
+    {
+        return usersCollection.AsExecutable();
+    }
+    
+    [UseOffsetPaging]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IExecutable<UserGroupEntity> GetPagedUserGroups([Service] IMongoCollection<UserGroupEntity> userGroupsCollection)
+    {
+        return userGroupsCollection.AsExecutable();
+    }
+   
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IExecutable<UserGroupEntity> GetUserGroups([Service] IMongoCollection<UserGroupEntity> userGroupsCollection)
+    {
+        return userGroupsCollection.AsExecutable();
+    }
+    
+    [UseOffsetPaging]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IExecutable<UserMessageEntity> GetPagedUserMessages([Service] IMongoCollection<UserMessageEntity> userMessagesCollection)
+    {
+        return userMessagesCollection.AsExecutable();
+    }
 }

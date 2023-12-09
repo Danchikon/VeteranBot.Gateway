@@ -1,6 +1,6 @@
 namespace VeteranBot.Gateway.Infrastructure.Options;
 
-public class GcpOptions
+public record GcpOptions
 {
     public const string Section = "Gcp";
     

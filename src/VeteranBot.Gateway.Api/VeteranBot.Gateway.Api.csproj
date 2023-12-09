@@ -11,18 +11,7 @@
     <ItemGroup>
         <PackageReference Include="HotChocolate.AspNetCore" Version="14.0.0-p.7" />
         <PackageReference Include="HotChocolate.Data" Version="14.0.0-p.7" />
-        <PackageReference Include="HotChocolate.Data.EntityFramework" Version="14.0.0-p.7" />
-        <PackageReference Include="HotChocolate.Data.Spatial" Version="14.0.0-p.7" />
-        <PackageReference Include="HotChocolate.Types.Spatial" Version="14.0.0-p.7" />
-        <PackageReference Include="Mapster.Immutable" Version="1.0.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <PackageReference Include="HotChocolate.Data.MongoDb" Version="14.0.0-p.7" />
         <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
     </ItemGroup>

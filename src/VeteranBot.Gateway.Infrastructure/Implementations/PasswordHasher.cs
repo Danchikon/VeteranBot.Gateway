@@ -2,7 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.Extensions.Options;
 using VeteranBot.Gateway.Application.Abstractions;
-using VeteranBot.Gateway.Infrastructure.Security;
+using VeteranBot.Gateway.Infrastructure.Options;
 
 namespace VeteranBot.Gateway.Infrastructure.Implementations;
 

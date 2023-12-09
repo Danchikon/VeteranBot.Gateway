@@ -1,4 +1,4 @@
-namespace VeteranBot.Gateway.Infrastructure.Security;
+namespace VeteranBot.Gateway.Infrastructure.Options;
 
 public record PasswordHasherOptions
 {

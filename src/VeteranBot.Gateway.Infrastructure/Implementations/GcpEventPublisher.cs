@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.PubSub.V1;
 using Google.Protobuf;
@@ -13,13 +14,20 @@ public class GcpEventPublisher(
     IOptions<GcpOptions> gcpOptions
     ) : IEventPublisher
 {
+    private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        PropertyNameCaseInsensitive = false,
+        Converters = { new JsonStringEnumConverter() }
+    };
+    
     public async Task PublishAsync<TIntegrationEvent>(
         string topic, 
         TIntegrationEvent integrationEvent,
         CancellationToken cancellationToken = default
         )
     {
-        var bytes = JsonSerializer.SerializeToUtf8Bytes(integrationEvent);
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(integrationEvent, _jsonSerializerOptions);
         
         var message = new PubsubMessage
         {

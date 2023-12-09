@@ -1,5 +1,4 @@
 using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using VeteranBot.Gateway.Domain.Common.Errors;
@@ -8,7 +7,7 @@ using VeteranBot.Gateway.Domain.Common.Repositories;
 
 namespace VeteranBot.Gateway.Infrastructure.Common.Repositories;
 
-public class MongoRepository<TEntity, TDbContext> : IRepository<TEntity> where TEntity : class
+public class MongoRepository<TEntity> : IRepository<TEntity> where TEntity : class
 {
     private readonly IMongoCollection<TEntity> _mongoCollection;
 
@@ -17,17 +16,28 @@ public class MongoRepository<TEntity, TDbContext> : IRepository<TEntity> where T
         _mongoCollection = mongoCollection;
     }
 
-    public async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
+    public async Task<TEntity> AddAsync(
+        TEntity entity, 
+        CancellationToken cancellationToken = default
+        )
     {
         await _mongoCollection.InsertOneAsync(entity, cancellationToken: cancellationToken);
 
         return entity;
     }
+    
+    public async Task AddManyAsync(
+        ICollection<TEntity> entities, 
+        CancellationToken cancellationToken = default
+    )
+    {
+        await _mongoCollection.InsertManyAsync(entities, cancellationToken: cancellationToken);
+    }
 
     public async Task<TEntity> UpdateAsync(
         Expression<Func<TEntity, bool>> where, 
         TEntity entity, 
-        CancellationToken cancellationToken
+        CancellationToken cancellationToken = default
         )
     
     {
@@ -40,7 +50,18 @@ public class MongoRepository<TEntity, TDbContext> : IRepository<TEntity> where T
         return entity;
     }
 
-    public async Task<TEntity> FirstAsync(ICollection<Expression<Func<TEntity, bool>>>? wheres = null, CancellationToken cancellationToken = default)
+    public async Task RemoveAsync(
+        Expression<Func<TEntity, bool>> where, 
+        CancellationToken cancellationToken = default
+        )
+    {
+        await _mongoCollection.DeleteOneAsync(where, cancellationToken: cancellationToken);
+    }
+
+    public async Task<TEntity> FirstAsync(
+        ICollection<Expression<Func<TEntity, bool>>>? wheres = null, 
+        CancellationToken cancellationToken = default
+        )
     {
         var entity = await FirstOrDefaultAsync(wheres, cancellationToken);
 
@@ -56,7 +77,10 @@ public class MongoRepository<TEntity, TDbContext> : IRepository<TEntity> where T
         return entity;
     }
 
-    public async Task<TEntity?> FirstOrDefaultAsync(ICollection<Expression<Func<TEntity, bool>>>? wheres = null, CancellationToken cancellationToken = default)
+    public async Task<TEntity?> FirstOrDefaultAsync(
+        ICollection<Expression<Func<TEntity, bool>>>? wheres = null, 
+        CancellationToken cancellationToken = default
+        )
     {
         var queryable = _mongoCollection.AsQueryable();
             
@@ -70,7 +94,10 @@ public class MongoRepository<TEntity, TDbContext> : IRepository<TEntity> where T
         return entity;
     }
 
-    public async Task<bool> AnyAsync(ICollection<Expression<Func<TEntity, bool>>>? wheres = null, CancellationToken cancellationToken = default)
+    public async Task<bool> AnyAsync(
+        ICollection<Expression<Func<TEntity, bool>>>? wheres = null, 
+        CancellationToken cancellationToken = default
+        )
     {
         var queryable = _mongoCollection.AsQueryable();
             

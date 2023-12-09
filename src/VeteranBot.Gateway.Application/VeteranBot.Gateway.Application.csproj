@@ -12,17 +12,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Mapster" Version="7.4.0" />
       <PackageReference Include="MediatR" Version="12.1.1" />
     </ItemGroup>
 
     <ItemGroup>
         <Generated Include="**\*.g.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="IntegrationEventHandlers\" />
-      <Folder Include="Mapping\Generated\" />
     </ItemGroup>
     
     <Target Name="CleanGenerated">

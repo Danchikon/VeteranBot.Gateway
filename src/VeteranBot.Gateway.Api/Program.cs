@@ -1,4 +1,3 @@
-using Amazon;
 using VeteranBot.Gateway.Api;
 using VeteranBot.Gateway.Api.Rest.Middlewares;
 using VeteranBot.Gateway.Application;
@@ -6,29 +5,15 @@ using VeteranBot.Gateway.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var host = builder.Host;
-var environment = builder.Environment;
-var configuration = builder.Configuration;
-var services = builder.Services;
+builder.Host.UseSerilogLogging();
 
-host.UseSerilogLogging();
+builder.Configuration.AddEnvironmentVariables();
 
-configuration.AddEnvironmentVariables();
-configuration.AddAwsConfiguration(configuration, environment);
-
-services.AddInfrastructure(configuration, environment);
-services.AddApplication();
-services.AddApi(environment);
+builder.Services.AddInfrastructure(builder.Configuration, builder.Environment);
+builder.Services.AddApplication();
+builder.Services.AddApi(builder.Environment);
 
 var app = builder.Build();
-
-// app.Lifetime.ApplicationStarted.Register(() =>
-// {
-//     Task.WhenAll(
-//             app.AwsS3PutBucketsAsync(new [] { FoldersNames.AvatarFolder }, app.Lifetime.ApplicationStopping)
-//             )
-//         .Wait();
-// });
 
 app.UseMiddleware<ExceptionalMiddleware>();
 
@@ -41,7 +26,7 @@ app.UseCors(corsPolicyBuilder =>
 
 app.UseRouting();
 
-if (environment.IsProduction() is false)
+if (app.Environment.IsProduction() is false)
 {
     app.UseSwagger();
     app.UseSwaggerUI();
